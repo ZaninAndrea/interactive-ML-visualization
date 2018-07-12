@@ -1,0 +1,10 @@
+.svg-dot-labels {
+  fill: white;
+  text-anchor: middle;
+}
+.svg-line-labels {
+  text-anchor: middle;
+  fill: black;
+  background: white;
+  padding: 5px;
+}

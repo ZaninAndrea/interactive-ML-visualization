@@ -25,8 +25,11 @@ LEGENDA:
 
 [scatterplot with random weights]
 
+Now we start to train our network: we pass one point to our network and ask it for a prediction, then we compare the prediction with the actual label, computing an error:
+[error = actual label - prediction]
+
+If the prediction is correct we do nothing, but if the prediction was wrong we update the weights [raschka page 48]
 
 
 
-
-TODO: use colors to make variables stand out
+TODO: use colors to link variables in text and in the visualizations

@@ -34,8 +34,8 @@ export function train(dataset, labels, rounds) {
   return trainedWeights;
 }
 
-export function* interactiveTrain(dataset, labels) {
-  let trainedWeights = [rand(0, 1), rand(0, 1)];
+export function* interactiveTrain(dataset, labels, initialWeights) {
+  let trainedWeights = initialWeights;
   let round = 1;
   yield { weights: trainedWeights, round: 1 };
 
@@ -44,8 +44,14 @@ export function* interactiveTrain(dataset, labels) {
       const element = dataset[i];
       yield { highlightedPoint: element };
 
+      const oldWeights = trainedWeights;
       trainedWeights = updateWeights(trainedWeights, element, labels[i]);
-      yield { weights: trainedWeights };
+
+      if (
+        oldWeights[0] !== trainedWeights[0] ||
+        oldWeights[1] !== trainedWeights[1]
+      )
+        yield { weights: trainedWeights };
     }
 
     yield { round: ++round };
